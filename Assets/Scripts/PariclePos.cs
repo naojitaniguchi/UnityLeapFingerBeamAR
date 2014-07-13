@@ -39,7 +39,7 @@ public class PariclePos : MonoBehaviour {
 			}
 		}
 
-		if (Input.GetKey(KeyCode.Space))
+		if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.A) )
 		{
 			flying = true ;
 			elaspedTime = 0 ;

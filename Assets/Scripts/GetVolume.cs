@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿	using UnityEngine;
 using System.Collections;
 
 public class GetVolume : MonoBehaviour {
@@ -13,9 +13,14 @@ public class GetVolume : MonoBehaviour {
 	public GameObject audioInputObject;
 	MicrophoneInput micIn;
 	// Use this for initialization
+	AudioSource audioSource;
+	public AudioClip audioClip;
+
 	void Start () {
 		audioInputObject = GameObject.Find("AudioInput");
 		micIn = (MicrophoneInput) audioInputObject.GetComponent("MicrophoneInput");
+		audioSource = gameObject.GetComponent<AudioSource>();
+		audioSource.clip = audioClip;
 	}
 	
 	// Update is called once per frame
@@ -28,6 +33,8 @@ public class GetVolume : MonoBehaviour {
 		// Debug.Log( loudness ) ;
 
 		if ( loudness > loudnessFire ){
+			audioSource.PlayOneShot( audioClip );
+
 			PariclePos ppos = Thumb.GetComponent<PariclePos>();
 			ppos.fire();
 
